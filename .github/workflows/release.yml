@@ -233,7 +233,7 @@ jobs:
       VERSION: ${{ needs.check-and-bump.outputs.version }}
     steps:
       - name: Checkout repository (with bumped version)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
 
@@ -250,13 +250,13 @@ jobs:
           key: aarch64-linux-android
 
       - name: Setup Java 17 (Android Gradle Plugin requirement)
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: 17
 
       - name: Restore the release keystore (stable APK signature)
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.android/paperling-release.keystore
           key: paperling-android-release-keystore-v1
